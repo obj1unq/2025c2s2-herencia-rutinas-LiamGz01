@@ -43,13 +43,14 @@ class RemoCompeticion inherits Remo(intensidad = 1.7) {
 }
 
 class Persona {
-    const peso = 0
+    var property peso = 0
     method puedeHacerRutina(rutina) {
         throw new Exception (message = "No puede hacer rutina ") // no todos pueden realizar la turtina 
     }
 
-    method tiempoEjercicio() {
-        throw new Exception (message = "se debe especificar tiempo de ejercicio")
+    method tiempoEjercicio(rutina) {
+    //     throw new Exception (message = "se debe especificar tiempo de ejercicio")
+        return 3
     }
 
     method kilosPorCalorias() {
@@ -57,9 +58,10 @@ class Persona {
     }
 
     method pesoPerdido() {
-      throw new Exception (message ="")
+      throw new Exception (message ="el peso")
     }
     method aplicarRutina(rutina) {
+        //throw new Exception (message = "")
         if (self.puedeHacerRutina(rutina)){
             peso = peso - self.pesoPerdido().truncate(3)
         }
@@ -69,22 +71,29 @@ class Persona {
 
 
 class PersonaSedentaria inherits Persona{
-  const property nombre = ""
-  const property tiempoDeEjercicio = 0
+    const property nombre = ""
+    const property tiempoDeEjercicio = 0
 
-  override method puedeHacerRutina(rutina) {
-    return peso > 50
-  }
+    override method puedeHacerRutina(rutina) {
+        return peso > 50
+    }
 
-  override method tiempoEjercicio(rutina){
-    return tiempoDeEjercicio
+    override method tiempoEjercicio(rutina){
+        return tiempoDeEjercicio
 
-  }
+    }
     
 }
 
 class PersonaAtleta inherits Persona {
 
+}
 
+
+class Club {
+  
+}
+
+class Predio inherits Club {
   
 }
