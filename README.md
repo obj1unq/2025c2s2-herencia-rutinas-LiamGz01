@@ -14,9 +14,7 @@ tiempo que se practique.
 En este sistema se contemplan 4 tipos de rutina: Running, Maratón, Remo y Remo
 de competición.
 
-Independiente de cual es la rutina, siempre la fórmula para saber cuántas
-calorías baja una rutina depende del tiempo que se practique  y una intensidad
-con la siguiente fórmula:
+Independiente de cual es la rutina, siempre la fórmula para saber cuántas calorías baja una rutina depende del tiempo que se practique  y una intensidad con la siguiente fórmula:
 
 - `100 * (tiempo - descanso) * intensidad`
 
@@ -57,8 +55,7 @@ Es un tipo especial de Running con la siguiente diferencia:
 Es un tipo especial de Remo con las siguientes diferencias:
 
 - La intensidad es siempre 1.7
-- El descanso son 3 minutos menos de lo que se descansa en una rutina de remo normal. Pero
-ojo, si ese valor es menor a 2, entonces es 2 (Tip: usar el método max de los números)
+- El descanso son 3 minutos menos de lo que se descansa en una rutina de remo normal. Pero ojo, si ese valor es menor a 2, entonces es 2 (Tip: usar el método max de los números)
 
 **Ejemplo:** **remar en el camino de los remeros** es una actividad de remo de competición 
 - Al practicarse por 5 minutos quemará `100 * (5 - 2) * 1.7 = 510`
