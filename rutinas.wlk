@@ -1,72 +1,45 @@
 class Rutina {
-  method caloriasQuemasdas(tiempo) {
-    throw new Exception(message = "debe especificar calorias") //se tiene que implementar las calorias quemadas
+  method descanso(tiempo)
 
-  }
+  method intensidad()
+
+  method caloriasQuemadas(tiempo) {return 100 * (tiempo - self.descanso(tiempo)) * self.intensidad()}
 }
 
-class Running inherits Rutina(){
-  const property nombre = "" 
-  const property intensidad = 0
+//1. Rutinas
 
-  method caloriasQuemadas(tiempo) {
-    const descanso =  if (tiempo > 20) 5 else 2
-    return 100 * (tiempo -descanso ) * intensidad
-    
-  }
+class Running inherits Rutina(){
+  const property intensidad  
+
+  override method descanso(tiempo) = if (tiempo > 20) 5 else 2
 }
 
 class Maraton inherits Running  {
-  override method caloriasQuemadas(tiempo) {
-    return tiempo * 2
-  }
+  override method caloriasQuemadas(tiempo) = tiempo * 2
 }
 
 class Remo inherits Rutina{
-  const property nombre = ""
-  const property intensidad = 1.5
-
-  method caloriasQuemadas(tiempo) {
-    const descanso = tiempo / 8
-    return 100 * (tiempo - descanso ) * intensidad    
-  } 
+  override method intensidad() = 1.3
+  override method descanso(tiempo) = tiempo / 5
 }
 
-class RemoCompeticion inherits Remo(intensidad = 1.7) {
-
-    override method caloriasQuemadas(tiempo) {
-        const descansoNormal = tiempo / 5
-        const descanso = descansoNormal - 3.max(2)
-        return 100 * (tiempo - descanso) * intensidad
-      
-    }
+class RemoCompeticion inherits Remo() {
+  override method intensidad() = return 1.7
+  override method descanso(tiempo) = (super(tiempo) - 3).max(2)
 }
+
+
+//2. Personas
 
 class Persona {
     var property peso = 0
-    method puedeHacerRutina(rutina) {
-        throw new Exception (message = "No puede hacer rutina ") // no todos pueden realizar la turtina 
-    }
 
-    method tiempoEjercicio(rutina) {
-    //     throw new Exception (message = "se debe especificar tiempo de ejercicio")
-        return 3
-    }
+    method puedeHacerRutina()
+    method tiempoDeEjercicio()
+    method kilosPorCalorias()
 
-    method kilosPorCalorias() {
-        
-    }
+    method hacerRutina(rutina) {if (!self.puedeHacerRutina()) self.error(rutina.toString() + "no se pude practicar")}
 
-    method pesoPerdido() {
-      throw new Exception (message ="el peso")
-    }
-    method aplicarRutina(rutina) {
-        //throw new Exception (message = "")
-        if (self.puedeHacerRutina(rutina)){
-            peso = peso - self.pesoPerdido().truncate(3)
-        }
-      
-    }
 }
 
 
